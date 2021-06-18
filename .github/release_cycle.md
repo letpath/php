@@ -13,11 +13,11 @@ git merge devel --no-ff -m 'merge with devel'
   to call version script that rename files that have version at the end.
 
 ``bash
-./scripts/version 2.21.0
+./scripts/version 1.2.3
 make
-git commit -am 'version 2.21.0'
+git commit -am 'version 1.2.3'
 git push
-git tag 2.21.0
+git tag 1.2.3
 git push --tags
 ```
 

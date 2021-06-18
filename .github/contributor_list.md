@@ -1,4 +1,3 @@
-
 ## List of contributors with avatars
 
 To update the list, the script need to be run when change is merged to master and since all merges are done on
