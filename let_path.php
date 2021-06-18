@@ -1,5 +1,6 @@
 <?php
 
+// 'https://php.letpath.com/let_path.php',
 //namespace LetPath;
 
 
@@ -38,7 +39,7 @@ function let_path($path, $callback = null)
 		$paths = $path;
 	}
 
-	$txt = '';
+	$txt = [];
 	foreach ($paths as $path_item) {
 		// check if path exist
 		if (!path_exists($path_item)) {
@@ -52,10 +53,10 @@ function let_path($path, $callback = null)
 		}
 
         if (is_callable($callback)) {
-            return $callback($txt);
+            return $callback($path_item);
         }
 
-		$txt .= $file;
+		$txt[] = $file;
 	}
 
 
