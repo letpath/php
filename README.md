@@ -1,11 +1,16 @@
 # php.letpath.com
 
 
-Requests:
+## Requests:
+
+### local
 [test.php](http://localhost:8080/test.php)
 
+### prod
+[test.php](https://php.letpath.com/test.php)
 
-## on linux
+
+## Start on linux
 
 ### install environment packages
 
@@ -17,7 +22,7 @@ Requests:
     sh .apiexec/dev
 
 
-## on windows
+## Start on windows
 
 ### install environment packages
 

@@ -2,6 +2,22 @@
 
 //namespace LetPath;
 
+
+function getDirContents($dir, &$results = array()) {
+    $files = scandir($dir);
+
+    foreach ($files as $key => $value) {
+        $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+        if (!is_dir($path)) {
+            $results[] = $path;
+        } else if ($value != "." && $value != "..") {
+            getDirContents($path, $results);
+            $results[] = $path;
+        }
+    }
+
+    return $results;
+}
 /**
  * @param $path
  * @param null $callback
@@ -12,35 +28,36 @@
 function let_path($path, $callback = null)
 {
 	if (empty($path)) {
-		throw new Exception("Url: $path is empty");
+		throw new Exception("path: $path is empty");
 	}
 
-	$urls = [];
-	if (!is_array($url)) {
-		$urls[] = $url;
+	$paths = [];
+	if (!is_array($path)) {
+		$paths[] = $path;
 	} else {
-		$urls = $url;
+		$paths = $path;
 	}
 
 	$txt = '';
-	foreach ($urls as $url_item) {
-		// check if URL exist
-		if (!url_exists($url_item)) {
-			throw new Exception("Url: " . $url_item . " not exist ");
+	foreach ($paths as $path_item) {
+		// check if path exist
+		if (!path_exists($path_item)) {
+			throw new Exception("path: " . $path_item . " not exist ");
 		}
 
 		// Check Content
-		$file = file_get_contents($url, true);
+		$file = file_get_contents($path, true);
 		if (empty($file)) {
-			throw new Exception("Content from Url: $url is empty");
+			throw new Exception("Content from path: $path is empty");
 		}
+
+        if (is_callable($callback)) {
+            return $callback($txt);
+        }
 
 		$txt .= $file;
 	}
 
-	if (is_callable($callback)) {
-		return $callback($txt);
-	}
 
 	return $txt;
 }
@@ -55,16 +72,16 @@ class LetPath
 	public $json = [];
 
 	/** @var string */
-	public $url = '';
+	public $path = '';
 
 	/**
 	 * LetPath constructor.
-	 * @param $url
+	 * @param $path
 	 */
-	function __construct($url)
+	function __construct($path)
 	{
-		$this->url = $url;
-		$this->json = let_path($url);
+		$this->path = $path;
+		$this->json = let_path($path);
 	}
 
 	/**
@@ -88,17 +105,12 @@ class LetPath
 
 
 /**
- * @param string $url
+ * @param string $path
  * @return bool
  */
-function url_exists($url)
+function path_exists($path)
 {
-	if (curl_init($url) === false) {
-		return false;
-	}
-
-	$headers = @get_headers($url);
-	if (strpos($headers[0], '200') === false) {
+	if (file_exists($path) === false) {
 		return false;
 	}
 

@@ -5,6 +5,13 @@ require('.apifunc/apifunc.php');
 
 use letjson\LetJson;
 
+
+//let_query(, "/*/*/.github/FUNDING.yml", function(){
+//let_path(, "/*/*/.github/FUNDING.yml", function(){
+//
+//    if
+//})
+
 try {
     // how to load composer packages?
     apifunc([
