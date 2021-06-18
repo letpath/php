@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>php.parkingomat.com</title>
+
+    <link rel="stylesheet" href="//md.softreck.dev/reset.css">
+    <link rel="stylesheet" href="//md.softreck.dev/reveal.css">
+    <link rel="stylesheet" href="//md.softreck.dev/white.css">
+    <link rel="stylesheet" href="//md.softreck.dev/docs.css">
+
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/split_file_by_separator@5.0.1/dist/css/split_file_by_separator.min.css" rel="stylesheet"
+		  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/split_file_by_separator@5.0.1/dist/js/split_file_by_separator.bundle.min.js"
+			integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+			crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+
+        <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+        <section data-markdown="README.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+    </div>
+
+</div>
+
+<script src="//md.softreck.dev/dist/reveal.js"></script>
+<script src="//md.softreck.dev/plugin/markdown/markdown.js"></script>
+
+<script>
+
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        plugins: [RevealMarkdown]
+    });
+
+</script>
+
+
+</body>
+</html>
